@@ -74,6 +74,9 @@ public class HibernateStudentRepositoryTest extends TestCase {
         assertThat(all.get(0).getHibernateUniversity().getName(), is("RUB"));
         assertThat(all.get(0).getHibernateUniversity().getCountry(), is("Germany"));
         assertThat(all.get(0).getHibernateUniversity().getCity(), is("Bochum"));
+        assertThat(all.get(0).getAge(), is(10));
+        assertThat(all.get(0).getWage(), is(100.0));
+        assertThat(all.get(0).isActive(), is(true));
     }
 
 
