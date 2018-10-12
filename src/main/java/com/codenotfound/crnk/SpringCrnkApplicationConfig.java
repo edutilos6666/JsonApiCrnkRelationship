@@ -2,19 +2,14 @@ package com.codenotfound.crnk;
 
 import javax.annotation.PostConstruct;
 
-import com.codenotfound.crnk.domain.model.Student;
-import com.codenotfound.crnk.domain.model.University;
-import com.codenotfound.crnk.domain.repository.StudentRepository;
-import com.codenotfound.crnk.domain.repository.UniversityRepository;
+import com.codenotfound.crnk.domain.model.*;
+import com.codenotfound.crnk.domain.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.codenotfound.crnk.domain.model.Article;
-import com.codenotfound.crnk.domain.model.Person;
-import com.codenotfound.crnk.domain.repository.ArticleRepository;
-import com.codenotfound.crnk.domain.repository.PersonRepository;
-
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Configuration
 public class SpringCrnkApplicationConfig {
@@ -29,6 +24,11 @@ public class SpringCrnkApplicationConfig {
   private StudentRepository studentRepository;
   @Autowired
   private UniversityRepository universityRepository;
+
+  @Autowired
+  private HibernateStudentRepository hibernateStudentRepository;
+  @Autowired
+  private HibernateUniversityRepository hibernateUniversityRepository;
 
   @PostConstruct
   public void init() {
@@ -62,5 +62,20 @@ public class SpringCrnkApplicationConfig {
     studentRepository.save(s2);
     studentRepository.save(s3);
 
+    HibernateStudent hs1, hs2, hs3;
+    HibernateUniversity hu1, hu2;
+
+    hs1 = new HibernateStudent("foo", "bar", 10, 100.0, true);
+    hs2 = new HibernateStudent("leo", "messi",20, 200.0, false);
+    hs3 = new HibernateStudent("cris", "tiano", 30, 300.0, true);
+    hu1 = new HibernateUniversity("RUB", "Germany", "Bochum", "44801", "andrey");
+    hu2 = new HibernateUniversity("Essen University", "Germany", "Essen", "34523", "shevchenko");
+    hs1.setHibernateUniversity(hu1);
+    hs2.setHibernateUniversity(hu1);
+    hs3.setHibernateUniversity(hu2);
+    hu1.setHibernateStudents(Stream.of(hs1, hs2).collect(Collectors.toList()));
+    hu2.setHibernateStudents(Stream.of(hs3).collect(Collectors.toList()));
+    hibernateUniversityRepository.save(hu1);
+    hibernateUniversityRepository.save(hu2);
   }
 }
