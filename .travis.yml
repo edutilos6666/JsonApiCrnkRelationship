@@ -3,6 +3,6 @@
     - mysql
 
   before_install:
-    - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -uroot -proot
+    - sudo mysql -uroot -e "USE mysql;UPDATE user SET authentication_string=PASSWORD('root') WHERE user='root';FLUSH PRIVILEGES;"
     - sudo service mysql restart
     - mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test2;'
