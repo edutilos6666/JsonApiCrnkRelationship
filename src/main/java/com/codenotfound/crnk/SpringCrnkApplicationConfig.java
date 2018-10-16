@@ -15,10 +15,10 @@ import java.util.stream.Stream;
 public class SpringCrnkApplicationConfig {
 
   @Autowired
-  ArticleRepository articleRepository;
+  private ArticleRepository articleRepository;
 
   @Autowired
-  PersonRepository personRepository;
+  private PersonRepository personRepository;
 
   @Autowired
   private StudentRepository studentRepository;
