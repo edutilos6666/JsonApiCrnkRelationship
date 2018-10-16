@@ -7,7 +7,7 @@ import io.crnk.core.resource.annotations.JsonApiResource;
 
 import javax.persistence.*;
 
-@JsonApiResource(type="hibernate_students")
+@JsonApiResource(type="hibernate-students")
 @Entity
 @Table(name="hibernate_student")
 public class HibernateStudent {

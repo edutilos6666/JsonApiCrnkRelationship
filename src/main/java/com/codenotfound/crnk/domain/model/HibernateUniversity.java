@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonApiResource(type="hibernate_universities")
+@JsonApiResource(type="hibernate-universities")
 @Entity
 @Table(name="hibernate_university")
 public class HibernateUniversity {

@@ -30,6 +30,9 @@ public class SpringCrnkApplicationConfig {
   @Autowired
   private HibernateUniversityRepository hibernateUniversityRepository;
 
+  @Autowired
+  private HibernateWorkerRepository hibernateWorkerRepository;
+
   @PostConstruct
   public void init() {
     Article article1 = new Article(1L, "JSON API paints my bikeshed!");
@@ -77,5 +80,16 @@ public class SpringCrnkApplicationConfig {
     hu2.setHibernateStudents(Stream.of(hs3).collect(Collectors.toList()));
     hibernateUniversityRepository.save(hu1);
     hibernateUniversityRepository.save(hu2);
+
+
+    HibernateWorker hw1, hw2, hw3, hw4;
+    hw1 = new HibernateWorker("foo", "bar", "Germany", "Bochum", "44801", 10, 100.0, true);
+    hw2 = new HibernateWorker("edu", "tilos", "Germany", "Essen", "44325", 20, 200.0, false);
+    hw3 = new HibernateWorker("leo", "messi", "Spain", "Barcelona", "12345", 30, 300.0, true);
+    hw4 = new HibernateWorker("cris", "tiano", "Italy", "Tourin", "54321", 40, 400.0, false);
+    hibernateWorkerRepository.save(hw1);
+    hibernateWorkerRepository.save(hw2);
+    hibernateWorkerRepository.save(hw3);
+    hibernateWorkerRepository.save(hw4);
   }
 }
