@@ -1,13 +1,14 @@
 package com.codenotfound.crnk;
 
-import javax.annotation.PostConstruct;
-
 import com.codenotfound.crnk.domain.model.*;
 import com.codenotfound.crnk.domain.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -32,6 +33,16 @@ public class SpringCrnkApplicationConfig {
 
   @Autowired
   private HibernateWorkerRepository hibernateWorkerRepository;
+
+  @Autowired
+  private ChartistChartDataBarChartRepository chartistChartDataBarChartRepository;
+
+  @Autowired
+  private ChartistChartDataPieChartRepository chartistChartDataPieChartRepository;
+
+
+  @Autowired
+  private ChartistChartDataLineChartRepository chartistChartDataLineChartRepository;
 
   @PostConstruct
   public void init() {
@@ -91,5 +102,56 @@ public class SpringCrnkApplicationConfig {
     hibernateWorkerRepository.save(hw2);
     hibernateWorkerRepository.save(hw3);
     hibernateWorkerRepository.save(hw4);
+
+
+    ChartistChartDataBarChart data1, data2, data3;
+    data1 = new ChartistChartDataBarChart("Monday", Arrays.asList(10.0, 11.0, 12.0));
+    data2 = new ChartistChartDataBarChart("Tuesday", Stream.of(13.0, 14.0, 15.0).collect(Collectors.toList()));
+    data3 = new ChartistChartDataBarChart("Wednesday", Stream.of(16.0, 17.0, 18.0).collect(Collectors.toList()));
+    chartistChartDataBarChartRepository.save(data1);
+    chartistChartDataBarChartRepository.save(data2);
+    chartistChartDataBarChartRepository.save(data3);
+
+
+    ChartistChartDataPieChart pie1, pie2, pie3, pie4, pie5, pie6, pie7;
+    pie1 = new ChartistChartDataPieChart("Google Chrome", generateRandomDouble());
+    pie2 = new ChartistChartDataPieChart("Mozilla Firefox", generateRandomDouble());
+    pie3 = new ChartistChartDataPieChart("Microsoft IE", generateRandomDouble());
+    pie4 = new ChartistChartDataPieChart("Microsoft Edge", generateRandomDouble());
+    pie5 = new ChartistChartDataPieChart("Apple Safari", generateRandomDouble());
+    pie6 = new ChartistChartDataPieChart("Opera", generateRandomDouble());
+    pie7 = new ChartistChartDataPieChart("Blisk", generateRandomDouble());
+    chartistChartDataPieChartRepository.create(pie1);
+    chartistChartDataPieChartRepository.create(pie2);
+    chartistChartDataPieChartRepository.create(pie3);
+    chartistChartDataPieChartRepository.create(pie4);
+    chartistChartDataPieChartRepository.create(pie5);
+    chartistChartDataPieChartRepository.create(pie6);
+    chartistChartDataPieChartRepository.create(pie7);
+
+
+    ChartistChartDataLineChart l1, l2, l3, l4, l5, l6,l7, l8;
+    l1 = new ChartistChartDataLineChart("One", Collections.singletonList(5.0));
+    l2 = new ChartistChartDataLineChart("Two", Collections.singletonList(9.0));
+    l3 = new ChartistChartDataLineChart("Three", Collections.singletonList(7.0));
+    l4 = new ChartistChartDataLineChart("Four", Collections.singletonList(8.0));
+    l5 = new ChartistChartDataLineChart("Five", Collections.singletonList(5.0));
+    l6 = new ChartistChartDataLineChart("Six", Collections.singletonList(3.0));
+    l7 = new ChartistChartDataLineChart("Seven", Collections.singletonList(5.0));
+    l8 = new ChartistChartDataLineChart("Eight", Collections.singletonList(4.0));
+    chartistChartDataLineChartRepository.create(l1);
+    chartistChartDataLineChartRepository.create(l2);
+    chartistChartDataLineChartRepository.create(l3);
+    chartistChartDataLineChartRepository.create(l4);
+    chartistChartDataLineChartRepository.create(l5);
+    chartistChartDataLineChartRepository.create(l6);
+    chartistChartDataLineChartRepository.create(l7);
+    chartistChartDataLineChartRepository.create(l8);
+
   }
+
+  private double generateRandomDouble() {
+      return new Random().nextInt(100);
+  }
+
 }

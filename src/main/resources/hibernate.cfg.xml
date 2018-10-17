@@ -35,7 +35,12 @@
         <mapping class="com.codenotfound.crnk.domain.model.HibernateStudent" />
         <mapping class="com.codenotfound.crnk.domain.model.HibernateUniversity" />
         <mapping class="com.codenotfound.crnk.domain.model.HibernateWorker" />
-
+        <mapping class="com.codenotfound.crnk.domain.model.ChartistChartDataBarChart" />
+        <mapping class="com.codenotfound.crnk.domain.model.ChartistChartDataPieChart" />
+        <mapping class="com.codenotfound.crnk.domain.model.ChartistChartDataLineChart" />
+        <mapping class="com.codenotfound.crnk.domain.model.TmpWorker" />
+        <mapping class="com.codenotfound.crnk.domain.model.TmpAddress" />
+        <mapping class="com.codenotfound.crnk.domain.model.TmpPerson" />
         <!-- List of XML mapping files -->
         <!--<mapping resource = "Employee.hbm.xml"/>-->
 
