@@ -41,6 +41,9 @@
         <mapping class="com.codenotfound.crnk.domain.model.TmpWorker" />
         <mapping class="com.codenotfound.crnk.domain.model.TmpAddress" />
         <mapping class="com.codenotfound.crnk.domain.model.TmpPerson" />
+        <mapping class="com.codenotfound.crnk.domain.model.GenericChartData" />
+        <mapping class="com.codenotfound.crnk.domain.model.GenericSerie" />
+        <mapping class="com.codenotfound.crnk.domain.model.GenericOption" />
         <!-- List of XML mapping files -->
         <!--<mapping resource = "Employee.hbm.xml"/>-->
 

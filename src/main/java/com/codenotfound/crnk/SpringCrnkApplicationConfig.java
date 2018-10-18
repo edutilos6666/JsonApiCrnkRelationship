@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -43,6 +41,10 @@ public class SpringCrnkApplicationConfig {
 
   @Autowired
   private ChartistChartDataLineChartRepository chartistChartDataLineChartRepository;
+
+
+  @Autowired
+  private GenericChartDataRepository genericChartDataRepository;
 
   @PostConstruct
   public void init() {
@@ -147,6 +149,25 @@ public class SpringCrnkApplicationConfig {
     chartistChartDataLineChartRepository.create(l6);
     chartistChartDataLineChartRepository.create(l7);
     chartistChartDataLineChartRepository.create(l8);
+
+
+
+    GenericChartData gcd1 = new GenericChartData("bar", Arrays.asList("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10"),
+            Arrays.asList(new GenericSerie(Arrays.asList(1.0, 2.0, 4.0, 8.0, 6.0, -2.0, -1.0, -4.0, -6.0, -2.0))));
+
+//    Map<String,Object> gcd1Options = new HashMap<String,Object>() {
+//      {
+//        put("high", 10);
+//        put("low", 0);
+//      }
+//    };
+    List<GenericOption> gcd1Options = Arrays.asList(new GenericOption("high","10"),
+            new GenericOption("low", "0"));
+    gcd1.setOptions(gcd1Options);
+    gcd1.setResponsiveOptions(new ArrayList<>());
+
+    genericChartDataRepository.create(gcd1);
+
 
   }
 
