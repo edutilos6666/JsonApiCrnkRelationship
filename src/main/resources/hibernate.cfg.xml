@@ -30,7 +30,7 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">false</property>
 
-        <!--<mapping class="com.edutilos.model.Worker" />-->
+        <!--<mapping class="com.edutilos.model.SimpleWorker" />-->
         <!--<mapping package="com.edutilos.model" />-->
         <mapping class="com.codenotfound.crnk.domain.model.HibernateStudent" />
         <mapping class="com.codenotfound.crnk.domain.model.HibernateUniversity" />
@@ -44,6 +44,7 @@
         <mapping class="com.codenotfound.crnk.domain.model.GenericChartData" />
         <mapping class="com.codenotfound.crnk.domain.model.GenericSerie" />
         <mapping class="com.codenotfound.crnk.domain.model.GenericOption" />
+        <mapping class="com.codenotfound.crnk.domain.model.SimpleWorker" />
         <!-- List of XML mapping files -->
         <!--<mapping resource = "Employee.hbm.xml"/>-->
 

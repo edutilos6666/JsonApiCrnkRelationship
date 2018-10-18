@@ -46,6 +46,9 @@ public class SpringCrnkApplicationConfig {
   @Autowired
   private GenericChartDataRepository genericChartDataRepository;
 
+  @Autowired
+  private SimpleWorkerRepository simpleWorkerRepository;
+
   @PostConstruct
   public void init() {
     Article article1 = new Article(1L, "JSON API paints my bikeshed!");
@@ -168,6 +171,19 @@ public class SpringCrnkApplicationConfig {
 
     genericChartDataRepository.create(gcd1);
 
+
+
+    SimpleWorker w1, w2, w3;
+    w1 = new SimpleWorker("foo", "bar", "Germany", "Bochum", "44801", "foo@bar", "foobar company",
+            10, 100.0, true, Arrays.asList("Reading", "Writing"));
+
+    w2 = new SimpleWorker("leo", "messi", "Germany", "Essen", "43214", "leo@messi", "leomessi company",
+            20, 200.0, false, Arrays.asList("Listening", "Speaking"));
+    w3 = new SimpleWorker("cris", "tiano", "Italy", "Juventus", "12345", "cris@tiano", "cristiano company",
+            30, 300.0, true, Arrays.asList("Reading", "Speaking"));
+    simpleWorkerRepository.create(w1);
+    simpleWorkerRepository.create(w2);
+    simpleWorkerRepository.create(w3);
 
   }
 
