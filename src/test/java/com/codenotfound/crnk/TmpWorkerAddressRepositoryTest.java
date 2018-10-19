@@ -11,7 +11,7 @@ import junit.framework.TestCase;
 
 import java.util.List;
 
-public class TmpSimpleWorkerAddressRepositoryTest extends TestCase {
+public class TmpWorkerAddressRepositoryTest extends TestCase {
     private BlogClient client;
     private TmpWorkerRepository tmpWorkerRepository;
     private TmpAddressRepository tmpAddressRepository;

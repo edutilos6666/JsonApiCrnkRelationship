@@ -4,6 +4,7 @@ import com.codenotfound.crnk.domain.model.SimpleWorker;
 import io.crnk.core.queryspec.FilterSpec;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryBase;
+import io.crnk.core.resource.list.DefaultResourceList;
 import io.crnk.core.resource.list.ResourceList;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -100,6 +101,10 @@ public class SimpleWorkerRepositoryImpl extends ResourceRepositoryBase<SimpleWor
         Optional<Integer> age = getFilterParam(querySpec, "age");
         Optional<Double> wage = getFilterParam(querySpec, "wage");
         Optional<Boolean> active = getFilterParam(querySpec, "active");
+        Optional<Integer> minAge =  getFilterParam(querySpec, "minAge");
+        Optional<Integer> maxAge = getFilterParam(querySpec, "maxAge");
+        Optional<Double> minWage = getFilterParam(querySpec, "minWage");
+        Optional<Double> maxWage = getFilterParam(querySpec, "maxWage");
         if(fname.isPresent()) {
             simpleWorkers = session.createQuery("from SimpleWorker where fname = :fname", SimpleWorker.class)
                     .setParameter("fname", fname.get())
@@ -140,11 +145,22 @@ public class SimpleWorkerRepositoryImpl extends ResourceRepositoryBase<SimpleWor
             simpleWorkers = session.createQuery("from SimpleWorker where active =: active", SimpleWorker.class)
                     .setParameter("active", active.get())
                     .getResultList();
+        } else if(minAge.isPresent() && maxAge.isPresent()) {
+            simpleWorkers = session.createQuery("from SimpleWorker where age >= :minAge and age <= :maxAge", SimpleWorker.class)
+                    .setParameter("minAge", minAge.get())
+                    .setParameter("maxAge", maxAge.get())
+                    .getResultList();
+        } else if(minWage.isPresent() && maxWage.isPresent()) {
+            simpleWorkers = session.createQuery("from SimpleWorker where wage >= :minWage and wage <= :maxWage", SimpleWorker.class)
+                    .setParameter("minWage", minWage.get())
+                    .setParameter("maxWage", maxWage.get())
+                    .getResultList();
         } else {
             simpleWorkers = session.createQuery("from SimpleWorker", SimpleWorker.class).getResultList();
         }
         session.close();
-        return querySpec.apply(simpleWorkers);
+//        return querySpec.apply(simpleWorkers);
+        return new DefaultResourceList<>(simpleWorkers, null, null);
     }
 
     @Override

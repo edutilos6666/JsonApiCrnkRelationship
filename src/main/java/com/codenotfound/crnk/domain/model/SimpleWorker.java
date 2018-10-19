@@ -29,6 +29,23 @@ public class SimpleWorker {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> activities;
 
+
+    public SimpleWorker(long id, String fname, String lname, String country, String city, String plz, String email, String company, int age, double wage, boolean active, List<String> activities) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.country = country;
+        this.city = city;
+        this.plz = plz;
+        this.email = email;
+        this.company = company;
+        this.age = age;
+        this.wage = wage;
+        this.active = active;
+        this.activities = activities;
+    }
+
+
     public SimpleWorker(String fname, String lname, String country, String city, String plz, String email, String company, int age, double wage, boolean active, List<String> activities) {
         this.fname = fname;
         this.lname = lname;
