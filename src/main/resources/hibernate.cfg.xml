@@ -15,7 +15,7 @@
         <!-- Assume test is the database name -->
 
         <property name = "hibernate.connection.url">
-            jdbc:mysql://localhost/test2?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC
+            jdbc:mysql://localhost/test2?useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC
         </property>
 
         <property name = "hibernate.connection.username">
@@ -32,7 +32,7 @@
 
         <!--<mapping class="com.edutilos.model.SimpleWorker" />-->
         <!--<mapping package="com.edutilos.model" />-->
-        <mapping class="com.codenotfound.crnk.domain.model.HibernateStudent" />
+<!--        <mapping class="com.codenotfound.crnk.domain.model.HibernateStudent" />
         <mapping class="com.codenotfound.crnk.domain.model.HibernateUniversity" />
         <mapping class="com.codenotfound.crnk.domain.model.HibernateWorker" />
         <mapping class="com.codenotfound.crnk.domain.model.ChartistChartDataBarChart" />
@@ -43,7 +43,7 @@
         <mapping class="com.codenotfound.crnk.domain.model.TmpPerson" />
         <mapping class="com.codenotfound.crnk.domain.model.GenericChartData" />
         <mapping class="com.codenotfound.crnk.domain.model.GenericSerie" />
-        <mapping class="com.codenotfound.crnk.domain.model.GenericOption" />
+        <mapping class="com.codenotfound.crnk.domain.model.GenericOption" />-->
         <mapping class="com.codenotfound.crnk.domain.model.SimpleWorker" />
         <!-- List of XML mapping files -->
         <!--<mapping resource = "Employee.hbm.xml"/>-->
